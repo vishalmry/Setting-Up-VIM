@@ -1,0 +1,98 @@
+call plug#begin('~/.config/nvim/bundle')
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'scrooloose/nerdtree'
+" Plug 'chriskempson/tomorrow-theme'
+Plug 'tpope/vim-commentary'
+Plug 'itchyny/lightline.vim'
+Plug 'rhysd/vim-clang-format'
+Plug 'morhetz/gruvbox'
+" Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-surround'
+Plug 'jiangmiao/auto-pairs'
+Plug 'ayu-theme/ayu-vim' 
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'hzchirs/vim-material'
+call plug#end()
+
+let g:deoplete#enable_at_startup = 1
+noremap <Leader><space> :noh<cr>
+set number relativenumber autochdir autoindent cursorline
+set mouse=a
+highlight Comment cterm=italic
+syntax enable
+set t_Co=256
+
+autocmd VimEnter * ClangFormatAutoEnable
+set formatoptions-=ro
+
+
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 > "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+set background=dark
+" colorscheme palenight
+" let ayucolor="dark"
+" colo ayu
+" let g:gruvbox_contrast_dark='hard'
+" colo cobalt
+" colo dracula
+" colo Tomorrow
+let g:palenight_terminal_italics=1
+" let g:lightline = { 'colorscheme' : 'palenight' }
+
+
+" Open multiple lines (insert empty lines) before or after current line,
+" and position cursor in the new space, with at least one blank line
+" before and after the cursor.
+function! OpenLines(nrlines, dir)
+  let nrlines = a:nrlines < 3 ? 3 : a:nrlines
+  let start = line('.') + a:dir
+  call append(start, repeat([''], nrlines))
+  if a:dir < 0
+    normal! 2k
+  else
+    normal! 2j
+  endif
+endfunction
+" Mappings to open multiple lines and enter insert mode.
+nnoremap <Leader><Leader>o :<C-u>call OpenLines(v:count, 0)<CR>S
+nnoremap <Leader><Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
+set foldmethod=manual
+" Quickly insert an empty new line without entering insert mode
+    nnoremap <Leader>o o<Esc>
+    nnoremap <Leader>O O<Esc>
+
+" some vim config
+set tabstop=4
+set softtabstop=4
+set expandtab
+set shiftwidth=4
+
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" tern
+autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
+let $BASH_ENV = "~/.bash_aliases"
+
+
+if (strftime("%H") > 7 && strftime("%H") < 18)
+  colo vim-material
+else
+  colo vim-material
+endif
+
+
+function CPP14()
+  :read ~/.config/nvim/templates/cpp14.sh
+endfunction
+
+" for commentry plugin set cpp comment to //
+autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
