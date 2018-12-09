@@ -28,3 +28,6 @@ if not os.path.isdir(home) :
 
 # now copy all the files in .vim directory, to set up the working environment
 os.system("cp -r * " + home)
+
+# install all the required plugins
+os.system('vim -c ":PlugInstall" -c ":qa"')
