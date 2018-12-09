@@ -9,6 +9,8 @@ VIMRC = open(home + "/.vimrc", "w+")
 with open("TempVimrc") as Tv :
     for line in Tv :
         VIMRC.write(line)
+VIMRC.close()
+Tv.close()
 
 # find the distro and install vim in it
 if find_executable("vim") is None :
