@@ -30,4 +30,4 @@ os.system("cp -r * " + home)
 os.system('vim -c ":PlugInstall" -c ":qa"')
 
 # setting up the vimrc
-os.system("cp -i .vimrc " + home)
+os.system("cp -i .vimrc " + os.path.expanduser("~"))
