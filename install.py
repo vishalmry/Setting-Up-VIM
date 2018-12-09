@@ -47,7 +47,8 @@ print ("Vim Plug Is Installing the Plugins, Please Wait....")
 os.call('vim -c ":PlugInstall" -c ":qa"', shell = True, stderr = True)
 
 # setting up the vimrc
+home = process.path.expanduser("~")
 print ("Copying VIMRC!!")
-os.call(["cp", "-f", ".vimrc", home])
+os.call(["cp", "-rf", ".vimrc", home])
 print ("Copying VIMRC finished!!")
 print ("Plugins Installed.... Enjoy VIM!!")
