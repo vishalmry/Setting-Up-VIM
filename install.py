@@ -6,9 +6,14 @@ from distutils.spawn import find_executable
 home = process.path.expanduser("~")
 
 VIMRC = open(home + "/.vimrc", "w+")
-with open("TempVimrc") as Tv :
+with open(".vimrc") as Tv :
+    cpy = True
     for line in Tv :
-        VIMRC.write(line)
+        if "plug#end" in line :
+            cpy = False
+            VIMRC.write(line)
+        else
+            VIMRC.write(line)
 VIMRC.close()
 Tv.close()
 
