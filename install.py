@@ -31,4 +31,4 @@ if not process.path.isdir(home) :
 os.call("cp -r * ~/.vim", shell = True)
 
 # install all the required plugins
-os.call('vim -c ":PlugInstall" -c ":qa"', shell = True)
+os.call('vim -c ":PlugInstall" -c ":qa"', shell = True, stdout = os.PIPE, stderr = os.PIPE)
