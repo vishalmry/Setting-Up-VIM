@@ -1,9 +1,9 @@
 # install script
-import os
+import os as process
 import subprocess as os
 from distutils.spawn import find_executable
 
-home = os.path.expanduser("~")
+home = process.path.expanduser("~")
 
 # setting up the vimrc
 os.call(["cp", "-y", ".vimrc", home])
