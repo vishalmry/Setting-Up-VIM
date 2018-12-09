@@ -37,5 +37,5 @@ os.call("cp -r * ~/.vim", shell = True)
 
 # install all the required plugins
 print ("Vim Plug Is Installing the Plugins, Please Wait....")
-os.call('vim -c ":PlugInstall" -c ":qa"', shell = True, stderror = True)
+os.call('vim -c ":PlugInstall" -c ":qa"', shell = True, stderr = True)
 print ("Plugins Installed.... Enjoy VIM!!")
