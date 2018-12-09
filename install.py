@@ -48,6 +48,6 @@ os.call('vim -c ":PlugInstall" -c ":qa"', shell = True, stderr = True)
 
 # setting up the vimrc
 print ("Copying VIMRC!!")
-os.call(["cp", ".vimrc", home])
+os.call(["cp", "-f", ".vimrc", home])
 print ("Copying VIMRC finished!!")
 print ("Plugins Installed.... Enjoy VIM!!")
