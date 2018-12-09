@@ -6,7 +6,9 @@ from distutils.spawn import find_executable
 home = process.path.expanduser("~")
 
 VIMRC = open(home + "/.vimrc", "w+")
-VIMRC.write("call plug#begin('~/.vim/plugged')\ncall plug#end()")
+with open("TempVimrc") as Tv :
+    for line in Tv :
+        VIMRC.write(line)
 
 # find the distro and install vim in it
 if find_executable("vim") is None :

@@ -1,0 +1,30 @@
+"" Specify a directory for plugins Specif 
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+Plug 'jiangmiao/auto-pairs'
+
+Plug 'crusoexia/vim-monokai'
+
+Plug 'hzchirs/vim-material'
+
+Plug 'nightsense/simplifysimplify'
+
+Plug 'itchyny/lightline.vim'
+
+Plug '/powerline/powerline'
+
+Plug 'kadekillary/subtle_solo'
+
+Plug 'kristijanhusak/vim-hybrid-material'
+
+Plug 'NLKNguyen/papercolor-theme'
+
+" Plug 'itchyny/lightline.vim'
+
+" Plug 'bling/vim-airline'
+
+" Initialize plugin system
+call plug#end()
