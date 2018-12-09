@@ -6,7 +6,7 @@ from distutils.spawn import find_executable
 home = process.path.expanduser("~")
 
 # setting up the vimrc
-os.call(["cp", "-y", ".vimrc", home])
+os.call(["mv", ".vimrc", home])
 
 # find the distro and install vim in it
 if find_executable("vim") is None :
