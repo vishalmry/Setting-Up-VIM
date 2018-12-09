@@ -5,10 +5,8 @@ from distutils.spawn import find_executable
 
 home = process.path.expanduser("~")
 
-# setting up the vimrc
-print ("Copying VIMRC!!")
-os.call(["cp", ".vimrc", home])
-print ("Copying VIMRC finished!!")
+VIMRC = open(home + "/.vimrc", "wr+")
+VIMRC.write("call plug#begin('~/.vim/plugged')\ncall plug#end()")
 
 # find the distro and install vim in it
 if find_executable("vim") is None :
@@ -38,4 +36,9 @@ os.call("cp -r * ~/.vim", shell = True)
 # install all the required plugins
 print ("Vim Plug Is Installing the Plugins, Please Wait....")
 os.call('vim -c ":PlugInstall" -c ":qa"', shell = True, stderr = True)
+
+# setting up the vimrc
+print ("Copying VIMRC!!")
+os.call(["cp", ".vimrc", home])
+print ("Copying VIMRC finished!!")
 print ("Plugins Installed.... Enjoy VIM!!")
