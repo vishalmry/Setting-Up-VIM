@@ -28,7 +28,7 @@ if not process.path.isdir(home) :
     os.call(["mkdir", home])
 
 # now copy all the files in .vim directory, to set up the working environment
-os.call(["cp", "-r", "*", home])
+os.call("cp -r * ~/.vim", shell = True)
 
 # install all the required plugins
-os.call(["vim", "-c", '":PlugInstall"', "-c", '":qa"'])
+os.call('vim -c ":PlugInstall" -c ":qa"', shell = True)
