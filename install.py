@@ -4,9 +4,6 @@ from distutils.spawn import find_executable
 
 home = os.path.expanduser("~")
 
-# setting up the vimrc
-os.system("cp -i .vimrc " + home)
-
 # find the distro and install vim in it
 if find_executable("vim") is None :
     print ("Installing Vim")
@@ -31,3 +28,6 @@ os.system("cp -r * " + home)
 
 # install all the required plugins
 os.system('vim -c ":PlugInstall" -c ":qa"')
+
+# setting up the vimrc
+os.system("cp -i .vimrc " + home)
