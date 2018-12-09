@@ -12,7 +12,7 @@ with open(".vimrc") as Tv :
         if "plug#end" in line :
             cpy = False
             VIMRC.write(line)
-        else :
+        elif cpy is True:
             VIMRC.write(line)
 VIMRC.close()
 Tv.close()
