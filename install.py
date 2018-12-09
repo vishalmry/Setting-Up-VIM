@@ -1,8 +1,12 @@
 # install script
 import os
+import subprocess as os
 from distutils.spawn import find_executable
 
 home = os.path.expanduser("~")
+
+# setting up the vimrc
+os.call(["cp", "-y", ".vimrc", home])
 
 # find the distro and install vim in it
 if find_executable("vim") is None :
@@ -21,13 +25,10 @@ home = home + "/.vim"
 
 # create .vim directory, if not available
 if not os.path.isdir(home) :
-    os.system("mkdir " + home)
+    os.call(["mkdir", home])
 
 # now copy all the files in .vim directory, to set up the working environment
-os.system("cp -r * " + home)
+os.call(["cp", "-r", "*", home])
 
 # install all the required plugins
-os.system('vim -c ":PlugInstall" -c ":qa"')
-
-# setting up the vimrc
-os.system("cp -i .vimrc " + os.path.expanduser("~"))
+os.call(["vim", "-c", '":PlugInstall"', "-c", '":qa"'])
