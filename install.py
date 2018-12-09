@@ -17,7 +17,7 @@ if find_executable("vim") is None :
     if "Fedora" in distroName :
         os.call(["sudo", "dnf", "install", "vim"])
     elif "Ubuntu" in distroName :
-        os.call(["sudo" "apt" "install" "vim"])
+        os.call(["sudo", "apt", "install", "vim"])
     elif "Arch" in distroName :
         os.call(["sudo", "pacman", "-S", "vim"])
     elif "Antergos" in distroName :
