@@ -1,7 +1,10 @@
 call plug#begin('~/.config/nvim/bundle')
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'gabrielsimoes/cfparser.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'joshdick/onedark.vim'
 " Plug 'chriskempson/tomorrow-theme'
 Plug 'tpope/vim-commentary'
 Plug 'itchyny/lightline.vim'
@@ -25,6 +28,8 @@ set t_Co=256
 
 autocmd VimEnter * ClangFormatAutoEnable
 set formatoptions-=ro
+
+let g:onedark_termcolors=16
 
 
 if (has("nvim"))
@@ -96,3 +101,33 @@ endfunction
 
 " for commentry plugin set cpp comment to //
 autocmd FileType c,cpp,cs,java setlocal commentstring=//\ %s
+
+" for terminal mapping
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <M-[> <Esc>
+endif
+
+
+if has('nvim')
+    " Terminal mode:
+    tnoremap <M-h> <c-\><c-n><c-w>h
+    tnoremap <M-j> <c-\><c-n><c-w>j
+    tnoremap <M-k> <c-\><c-n><c-w>k
+    tnoremap <M-l> <c-\><c-n><c-w>l
+    " Insert mode:
+    inoremap <M-h> <Esc><c-w>h
+    inoremap <M-j> <Esc><c-w>j
+    inoremap <M-k> <Esc><c-w>k
+    inoremap <M-l> <Esc><c-w>l
+    " Visual mode:
+    vnoremap <M-h> <Esc><c-w>h
+    vnoremap <M-j> <Esc><c-w>j
+    vnoremap <M-k> <Esc><c-w>k
+    vnoremap <M-l> <Esc><c-w>l
+    " Normal mode:
+    nnoremap <M-h> <c-w>h
+    nnoremap <M-j> <c-w>j
+    nnoremap <M-k> <c-w>k
+    nnoremap <M-l> <c-w>l
+endif
